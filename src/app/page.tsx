@@ -1,65 +1,134 @@
-import Image from "next/image";
+import { SectionReveal } from "@/components/section-reveal";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  BookOpen,
+  Globe,
+  Gamepad2,
+  MailWarning,
+  Shield,
+} from "lucide-react";
+import Link from "next/link";
 
-export default function Home() {
+const features = [
+  {
+    href: "/aprender",
+    icon: BookOpen,
+    title: "Aprender",
+    description:
+      "Entenda como ataques de phishing por e-mail funcionam, técnicas comuns e como se proteger.",
+  },
+  {
+    href: "/jogo",
+    icon: Gamepad2,
+    title: "Simulador",
+    description:
+      "Teste suas habilidades em 5 cenários realistas com cronômetro e pontuação.",
+  },
+  {
+    href: "/extensao",
+    icon: Globe,
+    title: "Extensão",
+    description:
+      "Conheça a extensão Chrome que analisa e-mails com bases de dados de segurança.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div>
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <SectionReveal>
+          <Badge className="mb-6 border-accent/30 bg-accent/10 text-accent">
+            Prevenção de phishing por e-mail
+          </Badge>
+          <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Aprenda a identificar{" "}
+            <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
+              e-mails maliciosos
+            </span>{" "}
+            antes de clicar
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 max-w-2xl text-lg text-muted">
+            PhishGuard une educação interativa e tecnologia: treine seu olhar
+            clínico no simulador e complemente com nossa extensão Chrome
+            desenvolvida em parceria com especialistas em segurança.
           </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link href="/jogo" className={buttonVariants({ size: "lg" })}>
+              Começar o desafio
+            </Link>
+            <Link
+              href="/aprender"
+              className={buttonVariants({ size: "lg", variant: "outline" })}
+            >
+              Conteúdo educativo
+            </Link>
+          </div>
+        </SectionReveal>
+      </section>
+
+      <section className="border-t border-border bg-surface/30 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionReveal>
+            <h2 className="text-center text-2xl font-bold sm:text-3xl">
+              Sua jornada de aprendizado
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-muted">
+              Três caminhos integrados para reduzir risco de phishing no dia a
+              dia.
+            </p>
+          </SectionReveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {features.map((f, i) => (
+              <SectionReveal key={f.href} delay={i * 0.1}>
+                <Link href={f.href} className="group block h-full">
+                  <Card className="h-full transition-all duration-300 group-hover:border-accent/40 group-hover:glow-accent">
+                    <CardContent className="flex h-full flex-col gap-4 pt-6">
+                      <f.icon className="h-10 w-10 text-accent" />
+                      <h3 className="text-xl font-semibold">{f.title}</h3>
+                      <p className="flex-1 text-sm text-muted">{f.description}</p>
+                      <span className="text-sm font-medium text-accent group-hover:underline">
+                        Explorar →
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </SectionReveal>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <SectionReveal>
+          <Card className="overflow-hidden border-accent/20">
+            <CardContent className="flex flex-col items-start gap-6 p-8 sm:flex-row sm:items-center">
+              <MailWarning className="h-16 w-16 shrink-0 text-warning" />
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold">Por que isso importa?</h2>
+                <p className="mt-2 text-muted">
+                  Mais de 90% dos ataques cibernéticos começam com um e-mail.
+                  Reconhecer sinais de phishing protege você, sua família e sua
+                  organização — sem depender só de sorte.
+                </p>
+              </div>
+              <Link
+                href="/extensao"
+                className={cn(
+                  buttonVariants({ variant: "secondary" }),
+                  "inline-flex items-center gap-2"
+                )}
+              >
+                <Shield className="h-4 w-4" />
+                Ver extensão
+              </Link>
+            </CardContent>
+          </Card>
+        </SectionReveal>
+      </section>
     </div>
   );
 }

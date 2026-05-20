@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <rect width="800" height="520" fill="#0f172a"/>
+  <rect x="20" y="20" width="760" height="48" rx="8" fill="#1e293b"/>
+  <text x="40" y="52" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">De: rh.premiacao@gmail.com</text>
+  <rect x="20" y="88" width="760" height="400" rx="8" fill="#1e293b"/>
+  <text x="60" y="130" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="18" font-weight="bold">Recursos Humanos  Premiação anual</text>
+  <text x="60" y="180" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="16">Prezado colaborador,</text>
+  <text x="60" y="220" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="15">Você foi selecionado para receber o bônus de desempenho.</text>
+  <text x="60" y="250" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="15">Confirme CPF e dados bancários no portal abaixo:</text>
+  <rect x="60" y="290" width="240" height="40" rx="6" fill="#6366f1"/>
+  <text x="100" y="316" fill="#fff" font-family="system-ui,sans-serif" font-size="13">portal-rh-empresa.info/confirmar</text>
+  <text x="60" y="380" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Remetente: rh.premiacao@gmail.com (não é domínio corporativo)</text>
+  <text x="60" y="420" fill="#ef4444" font-family="system-ui,sans-serif" font-size="11">  Spoofing de RH · Pedido de dados sensíveis</text>
+</svg>

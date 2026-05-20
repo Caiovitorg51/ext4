@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PhishGuard — Plataforma Web Anti-Phishing
 
-## Getting Started
+Site educativo sobre phishing por e-mail com simulador interativo (5 cenários, 2 minutos por tela) e página da extensão Chrome parceira.
 
-First, run the development server:
+## Stack
+
+- **Next.js** (App Router) — front e API
+- **PostgreSQL** — persistência de sessões e pontuações
+- **Prisma** — ORM
+- **Docker Compose** — ambiente local
+
+## Início rápido (Docker)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env
+docker compose up --build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O serviço `web` executa migrations, seed e `npm run dev` automaticamente.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Desenvolvimento local (sem Docker)
 
-## Learn More
+1. Suba o PostgreSQL (ou use `docker compose up db -d`).
+2. Configure o ambiente:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cp .env.example .env
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Instale dependências e prepare o banco:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npx prisma migrate dev --name init
+npm run db:seed
+npm run dev
+```
 
-## Deploy on Vercel
+## Variáveis de ambiente
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variável | Descrição |
+|----------|-----------|
+| `DATABASE_URL` | URL PostgreSQL |
+| `NEXT_PUBLIC_CHROME_STORE_URL` | Link da extensão na Chrome Web Store |
+| `SESSION_COOKIE_SECRET` | Reservado para evoluções de sessão |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Editar cenários do jogo
+
+1. Imagens em `public/phishing/tela-1.svg` … `tela-5.svg`
+2. Gabaritos e textos em `prisma/seed.ts`
+3. Lista de indicadores em `src/lib/indicators.ts`
+
+Após alterar o seed:
+
+```bash
+npm run db:seed
+```
+
+## Rotas principais
+
+| Rota | Descrição |
+|------|-----------|
+| `/` | Home |
+| `/aprender` | Conteúdo educativo |
+| `/jogo` | Cadastro do jogador |
+| `/jogo/1` … `/jogo/5` | Simulador |
+| `/jogo/resultado` | Pontuação final |
+| `/extensao` | CTA Chrome Web Store |
+
+## Pontuação
+
+Por tela: `(indicadores corretos marcados) / (total de corretos da tela)`.
+
+Global: média das 5 telas em percentual.
+
+## Equipes
+
+- **Web** — esta plataforma
+- **Extensão** — Chrome extension (análise de e-mails + bases de segurança)

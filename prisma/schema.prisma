@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id        String        @id @default(cuid())
+  name      String
+  createdAt DateTime      @default(now())
+  sessions  GameSession[]
+}
+
+model GameSession {
+  id          String          @id @default(cuid())
+  playerId    String
+  player      Player          @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  startedAt   DateTime        @default(now())
+  completedAt DateTime?
+  attempts    ScreenAttempt[]
+}
+
+model ScreenAttempt {
+  id                 String      @id @default(cuid())
+  sessionId          String
+  session            GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  screenNumber       Int
+  selectedIndicators String[]
+  correctCount       Int
+  totalCorrect       Int
+  scorePercent       Float
+  timeSpentSeconds   Int?
+  submittedAt        DateTime    @default(now())
+
+  @@unique([sessionId, screenNumber])
+}
+
+model PhishingScenario {
+  id                  Int      @id
+  slug                String   @unique
+  imagePath           String
+  title               String
+  correctIndicatorIds String[]
+  hint                String?
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <rect width="800" height="520" fill="#0f172a"/>
+  <rect x="20" y="20" width="760" height="48" rx="8" fill="#1e293b"/>
+  <text x="40" y="52" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">De: docs-share@googledocs-access.co</text>
+  <rect x="20" y="88" width="760" height="400" rx="8" fill="#1e293b"/>
+  <circle cx="100" cy="150" r="28" fill="#4285f4"/>
+  <text x="150" y="145" fill="#f8fafc" font-family="system-ui,sans-serif" font-size="20" font-weight="bold">Documento compartilhado</text>
+  <text x="150" y="172" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="14">Maria Silva compartilhou um arquivo com você</text>
+  <text x="60" y="230" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="15">Acesso expira em 2 horas. Entre para visualizar:</text>
+  <rect x="60" y="260" width="200" height="48" rx="8" fill="#fff"/>
+  <text x="85" y="292" fill="#333" font-family="system-ui,sans-serif" font-size="14">Sign in with Google</text>
+  <text x="60" y="340" fill="#64748b" font-family="system-ui,sans-serif" font-size="11">URL real: googledocs-access.co/login (não google.com)</text>
+  <text x="60" y="420" fill="#ef4444" font-family="system-ui,sans-serif" font-size="11">  OAuth falso · Urgência · Link enganoso</text>
+</svg>
