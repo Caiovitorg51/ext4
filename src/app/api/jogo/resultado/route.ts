@@ -37,6 +37,11 @@ export async function GET() {
     session.attempts.map((a) => a.scorePercent)
   );
 
+  const totalTimeSeconds = session.attempts.reduce(
+    (sum, a) => sum + (a.timeSpentSeconds ?? 0),
+    0
+  );
+
   await prisma.gameSession.update({
     where: { id: sessionId },
     data: { completedAt: new Date() },
@@ -71,6 +76,7 @@ export async function GET() {
   return NextResponse.json({
     playerName: session.player.name,
     globalScore,
+    totalTimeSeconds,
     screens,
   });
 }

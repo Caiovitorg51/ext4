@@ -1,6 +1,6 @@
 # PhishGuard — Plataforma Web Anti-Phishing
 
-Site educativo sobre phishing por e-mail com simulador interativo (5 cenários, 2 minutos por tela) e página da extensão Chrome parceira.
+Site educativo sobre phishing por e-mail com simulador interativo (5 cenários, tempo livre) e página da extensão Chrome parceira.
 
 ## Stack
 
@@ -48,9 +48,10 @@ npm run dev
 
 ## Editar cenários do jogo
 
-1. Imagens em `public/phishing/tela-1.svg` … `tela-5.svg`
-2. Gabaritos e textos em `prisma/seed.ts`
+1. UI do e-mail simulado em `src/components/email-simulator/scenarios/` (um arquivo por cenário)
+2. Gabaritos e metadados em `prisma/seed.ts` (campo `slug` liga ao componente)
 3. Lista de indicadores em `src/lib/indicators.ts`
+4. Shell compartilhado (barra do navegador + webmail) em `src/components/email-simulator/`
 
 Após alterar o seed:
 

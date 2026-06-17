@@ -44,7 +44,7 @@ export default function JogoCadastroPage() {
           <Gamepad2 className="mx-auto h-12 w-12 text-accent" />
           <h1 className="mt-4 text-3xl font-bold">Simulador de phishing</h1>
           <p className="mt-2 text-muted">
-            5 e-mails simulados · 2 minutos por tela · marque os indicadores
+            5 e-mails simulados · sem limite de tempo · marque os indicadores
             suspeitos
           </p>
         </div>

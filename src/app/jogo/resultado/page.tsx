@@ -4,7 +4,8 @@ import { PageTransition } from "@/components/page-transition";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Loader2, RotateCcw, Trophy } from "lucide-react";
+import { formatDuration } from "@/lib/format-duration";
+import { Clock, Loader2, RotateCcw, Trophy } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -21,6 +22,7 @@ type ScreenResult = {
 type ResultData = {
   playerName: string;
   globalScore: number;
+  totalTimeSeconds: number;
   screens: ScreenResult[];
 };
 
@@ -79,6 +81,13 @@ export default function ResultadoPage() {
             {data.globalScore}%
           </p>
           <p className="mt-2 text-muted">{message}</p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted">
+            <Clock className="h-4 w-4 text-accent" aria-hidden />
+            Tempo total:{" "}
+            <span className="font-medium text-foreground">
+              {formatDuration(data.totalTimeSeconds)}
+            </span>
+          </p>
         </div>
 
         <div className="space-y-6">

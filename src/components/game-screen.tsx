@@ -1,13 +1,12 @@
 "use client";
 
 import { PageTransition } from "@/components/page-transition";
-import { Timer } from "@/components/timer";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import type { Indicator } from "@/lib/indicators";
+import { EmailSimulator } from "@/components/email-simulator";
 import { ArrowRight, Loader2 } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
@@ -15,7 +14,7 @@ type GameScreenProps = {
   screenNumber: number;
   totalScreens: number;
   title: string;
-  imagePath: string;
+  slug: string;
   playerName: string;
   indicators: Indicator[];
 };
@@ -24,7 +23,7 @@ export function GameScreen({
   screenNumber,
   totalScreens,
   title,
-  imagePath,
+  slug,
   playerName,
   indicators,
 }: GameScreenProps) {
@@ -71,29 +70,17 @@ export function GameScreen({
     }
   }, [submitting, startTime, screenNumber, selected, totalScreens, router]);
 
-  const handleExpire = useCallback(() => {
-    void submit();
-  }, [submit]);
-
   return (
     <PageTransition>
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm text-muted">
-              Jogador: <span className="text-accent">{playerName}</span>
-            </p>
-            <h1 className="mt-1 text-2xl font-bold">
-              Tela {screenNumber} de {totalScreens}
-            </h1>
-            <p className="text-muted">{title}</p>
-          </div>
-          <Timer
-            key={screenNumber}
-            seconds={120}
-            onExpire={handleExpire}
-            running={!submitting}
-          />
+        <div className="mb-6">
+          <p className="text-sm text-muted">
+            Jogador: <span className="text-accent">{playerName}</span>
+          </p>
+          <h1 className="mt-1 text-2xl font-bold">
+            Tela {screenNumber} de {totalScreens}
+          </h1>
+          <p className="text-muted">{title}</p>
         </div>
 
         <Progress
@@ -104,20 +91,11 @@ export function GameScreen({
         />
 
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-          <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-xl">
+          <div className="overflow-hidden rounded-xl border border-border bg-[#0f1419] shadow-xl ring-1 ring-border/50">
             <div className="border-b border-border bg-surface-elevated px-4 py-2 text-xs text-muted">
-              Simulação de cliente de e-mail
+              Simulação — webmail no navegador (examine remetente, links e anexos)
             </div>
-            <div className="relative aspect-[4/3] w-full bg-[#1e293b] sm:aspect-[16/10]">
-              <Image
-                src={imagePath}
-                alt={title}
-                fill
-                className="object-contain p-2"
-                priority
-                sizes="(max-width: 1024px) 100vw, 66vw"
-              />
-            </div>
+            <EmailSimulator slug={slug} />
           </div>
 
           <aside className="flex flex-col gap-4">

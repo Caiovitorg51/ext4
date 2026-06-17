@@ -6,7 +6,7 @@ const scenarios = [
   {
     id: 1,
     slug: "banco-falso",
-    imagePath: "/phishing/tela-1.svg",
+    imagePath: "/simulado/banco-falso",
     title: "Alerta de segurança — Banco Nacional",
     correctIndicatorIds: [
       "sender-suspicious",
@@ -19,7 +19,7 @@ const scenarios = [
   {
     id: 2,
     slug: "correios-entrega",
-    imagePath: "/phishing/tela-2.svg",
+    imagePath: "/simulado/correios-entrega",
     title: "Taxa de importação — Correios Express",
     correctIndicatorIds: [
       "sender-suspicious",
@@ -32,7 +32,7 @@ const scenarios = [
   {
     id: 3,
     slug: "rh-premiacao",
-    imagePath: "/phishing/tela-3.svg",
+    imagePath: "/simulado/rh-premiacao",
     title: "RH — Confirme seus dados para premiação",
     correctIndicatorIds: [
       "spoofed-internal",
@@ -45,7 +45,7 @@ const scenarios = [
   {
     id: 4,
     slug: "oauth-falso",
-    imagePath: "/phishing/tela-4.svg",
+    imagePath: "/simulado/oauth-falso",
     title: "Acesso compartilhado — Documento Google",
     correctIndicatorIds: [
       "fake-oauth",
@@ -58,7 +58,7 @@ const scenarios = [
   {
     id: 5,
     slug: "nota-fiscal",
-    imagePath: "/phishing/tela-5.svg",
+    imagePath: "/simulado/nota-fiscal",
     title: "NF-e disponível — Faturamento",
     correctIndicatorIds: [
       "invoice-scam",

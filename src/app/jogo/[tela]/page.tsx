@@ -31,7 +31,7 @@ export default async function JogoTelaPage({ params }: Props) {
       screenNumber={screenNumber}
       totalScreens={5}
       title={scenario.title}
-      imagePath={scenario.imagePath}
+      slug={scenario.slug}
       playerName={session.player.name}
       indicators={INDICATORS}
     />
