@@ -1,6 +1,5 @@
 import { SectionReveal } from "@/components/section-reveal";
 import { buttonVariants } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { extensionContent } from "@/content/extension";
 import { ExternalLink, Globe, Shield } from "lucide-react";
@@ -8,25 +7,22 @@ import Link from "next/link";
 
 const storeUrl =
   process.env.NEXT_PUBLIC_CHROME_STORE_URL ??
-  "https://chrome.google.com/webstore/detail/PLACEHOLDER";
+  "https://chromewebstore.google.com/detail/alertaweb-%E2%80%94-detector-de-g/dmdjmfnoofdeidcbiahlofffcnjabfkh?hl=pt-BR";
 
 export default function ExtensaoPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-20">
       <SectionReveal>
-        <Badge className="mb-4 border-warning/40 bg-warning/10 text-warning">
-          Link da loja em atualização
-        </Badge>
         <div className="flex items-center gap-4">
           <div className="rounded-2xl border border-accent/30 bg-accent/10 p-4">
             <Globe className="h-12 w-12 text-accent" />
           </div>
           <div>
             <h1 className="text-3xl font-bold sm:text-4xl">
-              Extensão PhishGuard
+              Extensão AlertaWeb
             </h1>
             <p className="mt-2 text-muted">
-              Proteção em tempo real no seu navegador
+              Detector de golpes — proteção em tempo real no Chrome
             </p>
           </div>
         </div>
@@ -56,8 +52,7 @@ export default function ExtensaoPage() {
       <SectionReveal delay={0.2}>
         <div className="mt-10 flex flex-col items-center gap-4 rounded-xl border border-border bg-surface p-8 text-center">
           <p className="text-muted">
-            Instale gratuitamente na Chrome Web Store quando o link oficial
-            estiver disponível.
+            Instale gratuitamente na Chrome Web Store.
           </p>
           <a
             href={storeUrl}

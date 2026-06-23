@@ -25,7 +25,7 @@ services:
       - "3000:3000"
     environment:
       DATABASE_URL: postgresql://ext4:ext4secret@db:5432/ext4?schema=public
-      NEXT_PUBLIC_CHROME_STORE_URL: https://chrome.google.com/webstore/detail/PLACEHOLDER
+      NEXT_PUBLIC_CHROME_STORE_URL: https://chromewebstore.google.com/detail/alertaweb-%E2%80%94-detector-de-g/dmdjmfnoofdeidcbiahlofffcnjabfkh?hl=pt-BR
       SESSION_COOKIE_SECRET: dev-secret-change-in-production
     depends_on:
       db:
